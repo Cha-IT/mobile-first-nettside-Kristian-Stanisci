@@ -11,13 +11,15 @@ body {
   line-height: 1.6;              
   color: #5e3d2b;                
   background-color: #f3e4d4;  
+  margin: 0; 
+  padding: 0; 
   overflow-x: hidden;
 }
 
 .Meny {
   list-style: none;
   position: fixed;
-  top: 28%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #3e2a1e;
@@ -70,7 +72,7 @@ body {
   color: white;
   top: 80%;
   left: 50%;
-  width: 500px;
+  width: 100%;
   transform: translate(-50%, -50%);
   font-size: 0.6rem;
   font-weight: bold;
@@ -138,7 +140,7 @@ header {
   color: #d9b08a;
   font-size: 1.5rem;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   z-index: 100;
   box-sizing: border-box;

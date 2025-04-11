@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const handlevognClose = document.querySelector('.sidebar-close');
     const count = document.querySelector('.cart-count');
     const Items = document.querySelector('.Items');
+    const kasse = document.querySelector('.Checkout');
 
     const Cart = [];
     const storedCart = localStorage.getItem('cart');
@@ -151,4 +152,79 @@ document.addEventListener('DOMContentLoaded', () => {
         Meny.appendChild(categoryDiv);
     });
     updateCartCount();
+
+    kasse.addEventListener('click', () => {
+        if (Cart.length > 0) {
+            const confirmationPopup = document.createElement('div');
+            confirmationPopup.style.position = 'fixed';
+            confirmationPopup.style.top = '50%';
+            confirmationPopup.style.left = '50%';
+            confirmationPopup.style.transform = 'translate(-50%, -50%)';
+            confirmationPopup.style.backgroundColor = '#fff';
+            confirmationPopup.style.padding = '20px';
+            confirmationPopup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            confirmationPopup.style.borderRadius = '8px';
+            confirmationPopup.style.textAlign = 'center';
+            confirmationPopup.style.zIndex = '1000';
+
+            const message = document.createElement('p');
+            message.textContent = 'Takk for at du valgte oss! Din bestilling er bekreftet.';
+            message.style.marginBottom = '20px';
+            message.style.fontSize = '16px';
+            message.style.color = '#333';
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Lukk';
+            closeButton.style.backgroundColor = '#4CAF50';
+            closeButton.style.color = '#fff';
+            closeButton.style.border = 'none';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(confirmationPopup);
+            });
+
+            confirmationPopup.appendChild(message);
+            confirmationPopup.appendChild(closeButton);
+            document.body.appendChild(confirmationPopup);
+        } else {
+            const errorPopup = document.createElement('div');
+            errorPopup.style.position = 'fixed';
+            errorPopup.style.top = '50%';
+            errorPopup.style.left = '50%';
+            errorPopup.style.transform = 'translate(-50%, -50%)';
+            errorPopup.style.backgroundColor = '#fff';
+            errorPopup.style.padding = '20px';
+            errorPopup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            errorPopup.style.borderRadius = '8px';
+            errorPopup.style.textAlign = 'center';
+            errorPopup.style.zIndex = '1000';
+
+            const message = document.createElement('p');
+            message.textContent = 'Du har ingen varer i handlekurven.';
+            message.style.marginBottom = '20px';
+            message.style.fontSize = '16px';
+            message.style.color = '#333';
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Lukk';
+            closeButton.style.backgroundColor = '#f44336';
+            closeButton.style.color = '#fff';
+            closeButton.style.border = 'none';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(errorPopup);
+            });
+
+            errorPopup.appendChild(message);
+            errorPopup.appendChild(closeButton);
+            document.body.appendChild(errorPopup);
+        }
+    });
+
 });
